@@ -1,29 +1,33 @@
 import styles from './Tasks.module.css';
-import { TaskEmpty } from './TaskEmpty';
-import { Posts } from './Posts';
+import { Trash } from 'phosphor-react'
+import { useState } from 'react'
 
-
-export function Tasks() {
-    return (
-       <div>
-            <header className= {styles.tasksHeader}>
-                <div className={styles.tasksCreated}>
-                    <strong>Tarefas Criadas</strong>
-                    <span>0</span>
+interface TaskProps {
+    content: string;
+    // onDeleteComment: (comment: string) => void;
+}
+export function Tasks({content} : TaskProps) {
+    // const [checked, setChecked] = useState(false);
+    // const handleChecked = () => {
+    //     setChecked(!checked);
+    // };
+    // const checkedClass = checked ? 'checked' : '';
+    // const containerClass = `checkbox ${checkedClass}`.trim()
+    return (     
+            <div className={styles.postsContent}>
+               <div className={styles.checkboxCircle}>
+                    <label>
+                        <input 
+                        type='checkbox'
+                         />
+                    </label>
                 </div>
+                    <span>{content}</span>
+                    <button title='Deletar comentário'>
+                            <Trash size={24}/>
 
-                <div className={styles.tasksFinished}>
-                    <strong>Concluídas</strong>
-                    <span>0</span>
-                </div>
-            </header>
-
-            <hr />
-
-            <div className={styles.tasksContent}>
-              {/* <TaskEmpty/>  */}
-               <Posts/> 
+                    </button>
+               
             </div>
-       </div>
     )
 }

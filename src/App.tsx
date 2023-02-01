@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import styles from './App.module.css'
-
 import { Header } from './components/Header'
-import { Input } from './components/Input'
-import { Tasks } from './components/Tasks'
+import { Main } from './components/Main'
+
+
 
 export function App() {
   return (
@@ -12,14 +12,9 @@ export function App() {
         <Header/>
 
         <div className={styles.inputContent}>
-          <Input/>
+          <Main/>
         </div>
 
-        <main>
-          <div className={styles.tasks}>
-            <Tasks/>
-          </div>
-        </main>
     </div>
   )
 

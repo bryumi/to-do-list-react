@@ -1,47 +1,29 @@
-.tasksHeader {
+.postsContent{
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    margin-top: 4rem;
-    width: 46rem;
+    background: var(--gray-300);
+    color: var(--gray-100);
+    border-radius: 8px;
+
+    height: 4.5rem;
+
+    padding: 1rem;
 }
-
-.tasksCreated strong{
-    margin-right: 0.75rem;
-    color: var(--purple);
-} 
-
-.tasksCreated span {
-    background: var(--gray-400);
-    padding: 0.25rem 0.75rem;
-    border-radius: 45%;
-    box-shadow: 2px 2px 1px 0px var(--gray-700);
-} 
-
-.tasksFinished strong{
-    margin-right: 0.75rem;
-    color: var(--purple);
-}
-
-.tasksFinished span {
-    background: var(--gray-400);
-    padding: 0.25rem 0.75rem;
-    border-radius: 45%;
-    box-shadow: 2px 2px 1px 0px var(--gray-700);
-}
-
-hr {
-    margin-top: 2rem;
+.postsContent button {
+    background: transparent;
+    border: 0;
     color: var(--gray-400);
-    border-top: 0.5px;
-    border-radius: 80%;
-}
-
-.tasksContent{
-    width: 46rem;
+    cursor: pointer;
 
     display: flex;
-    flex-direction: column;
+    align-items: center;
+
+    border-radius: 2px;
 }
 
+.postsContent button:hover{
+    color: var(--danger);
+}
