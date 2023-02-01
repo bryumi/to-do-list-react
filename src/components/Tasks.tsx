@@ -1,5 +1,6 @@
 import styles from './Tasks.module.css';
-import { ClipboardText } from 'phosphor-react'
+import { TaskEmpty } from './TaskEmpty';
+import { Posts } from './Posts';
 
 
 export function Tasks() {
@@ -20,11 +21,8 @@ export function Tasks() {
             <hr />
 
             <div className={styles.tasksContent}>
-                <div className={styles.content}>
-                    <ClipboardText size={56} />
-                    <strong>Você ainda não tem tarefas cadastradas</strong>
-                    <p>Crie tarefas e organize seus itens a fazer</p>
-                </div>
+              {/* <TaskEmpty/>  */}
+               <Posts/> 
             </div>
        </div>
     )
