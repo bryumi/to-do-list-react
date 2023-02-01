@@ -29,6 +29,14 @@ export function Main() {
         event.target.setCustomValidity('Esse campo é obrigatório!')
     }
 
+    function deleteTask(taskToDelete: string){
+        const taskWithoutDeletedOne = tasks.filter(task => {
+            return task !== taskToDelete
+        })
+
+        setTasks(taskWithoutDeletedOne)
+    }
+
     const isNewTaskEmpty = newTask.length === 0
     return (
         <main>
@@ -74,8 +82,9 @@ export function Main() {
                         {tasks.map(task => {
                             return (
                                 <Tasks
+                                    key={task}
                                     content={task}
-                                   
+                                    onDeleteTask= {deleteTask} 
                                 />
                             )
                         })}

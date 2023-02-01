@@ -4,9 +4,12 @@ import { useState } from 'react'
 
 interface TaskProps {
     content: string;
-    // onDeleteComment: (comment: string) => void;
+    onDeleteTask: (comment: string) => void;
 }
-export function Tasks({content} : TaskProps) {
+export function Tasks({content, onDeleteTask} : TaskProps) {
+    function handleDeleteTask (){
+        onDeleteTask(content)
+    }
     // const [checked, setChecked] = useState(false);
     // const handleChecked = () => {
     //     setChecked(!checked);
@@ -23,7 +26,7 @@ export function Tasks({content} : TaskProps) {
                     </label>
                 </div>
                     <span>{content}</span>
-                    <button title='Deletar comentário'>
+                    <button onClick={handleDeleteTask} title='Deletar tarefa'>
                             <Trash size={24}/>
 
                     </button>
