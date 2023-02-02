@@ -3,13 +3,13 @@ import { PlusCircle } from 'phosphor-react';
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 import { Tasks } from './Tasks'
 
-
-
 export function Main() {
     const [tasks, setTasks] = useState([
         'estudar react'
     ]);
     const [newTask, setNewTask] = useState('');
+
+    const [countTasks, setCountTasks] = useState(1)
 
     function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
         event.target.setCustomValidity('')
@@ -22,6 +22,9 @@ export function Main() {
 
         setTasks([...tasks, newTask]);
         setNewTask('');
+        setCountTasks((state) => {
+            return state +1
+        });
         console.log(setTasks)
     }
 
@@ -66,12 +69,13 @@ export function Main() {
                 <header className={styles.tasksHeader}>
                     <div className={styles.tasksCreated}>
                         <strong>Tarefas Criadas</strong>
-                        <span>0</span>
+                        <span>{countTasks}</span>
                     </div>
 
                     <div className={styles.tasksFinished}>
                         <strong>Concluídas</strong>
-                        <span>0</span>
+                        <span>{countTasks} de {countTasks}
+                        </span>
                     </div>
                 </header>
 

@@ -1,0 +1,54 @@
+div.postsContent{
+    margin: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--gray-300);
+    color: var(--gray-100);
+    border-radius: 8px;
+
+    height: 4.5rem;
+
+    padding: 1rem;
+}
+div.postsContent button {
+    background: transparent;
+    border: 0;
+    color: var(--gray-400);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+
+    border-radius: 2px;
+}
+
+div.postsContent button:hover{
+    color: var(--danger);
+}
+
+.postsContent .checkbox{
+    display:inline-block;
+    background: var(--white);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+
+    border: solid var(--purple);
+    cursor:pointer;
+    transition: 0.2s;
+
+}
+
+.postsContent .checkbox:hover{
+    background: var(--gray-400);
+    border: solid var(--white);
+    
+}
+
+.checkbox.checked{
+    background: var(--gray-600);
+    border: solid var(--purple-dark);
+
+}

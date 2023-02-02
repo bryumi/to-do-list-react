@@ -75,12 +75,22 @@ main{
     box-shadow: 2px 2px 1px 0px var(--gray-700);
 } 
 
+.tasksFinished{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
 .tasksFinished strong{
     margin-right: 0.75rem;
     color: var(--purple);
 }
 
 .tasksFinished span {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+    width: 5.5rem;
     background: var(--gray-400);
     padding: 0.25rem 0.75rem;
     border-radius: 45%;
@@ -99,4 +109,8 @@ hr {
 
     display: flex;
     flex-direction: column;
+}
+
+.taskList{
+    margin-top: 2rem;
 }
