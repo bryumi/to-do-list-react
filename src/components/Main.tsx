@@ -2,6 +2,7 @@ import styles from './Main.module.css';
 import { PlusCircle } from 'phosphor-react';
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 import { Tasks } from './Tasks'
+import { TaskEmpty  } from './TaskEmpty';
 
 export function Main() {
     const [tasks, setTasks] = useState([
@@ -10,11 +11,12 @@ export function Main() {
     const [newTask, setNewTask] = useState('');
 
     const [countTasks, setCountTasks] = useState(1)
+    
 
     function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
         event.target.setCustomValidity('')
         setNewTask(event.target.value)
-        console.log(event.target.value)
+        
     }
 
     function handleCreateNewTask(event: FormEvent) {
@@ -38,8 +40,14 @@ export function Main() {
         })
 
         setTasks(taskWithoutDeletedOne)
+        setCountTasks((state) => {
+            return state - 1
+        });
     }
-
+    const [finishedTasks, setFinishedTasks] = useState(0)
+    function updateFinished(finished: number) {
+        setFinishedTasks(finished)
+    }
     const isNewTaskEmpty = newTask.length === 0
     return (
         <main>
@@ -74,7 +82,7 @@ export function Main() {
 
                     <div className={styles.tasksFinished}>
                         <strong>Concluídas</strong>
-                        <span>{countTasks} de {countTasks}
+                        <span>{finishedTasks} de {countTasks}
                         </span>
                     </div>
                 </header>
@@ -82,6 +90,10 @@ export function Main() {
                 <hr />
 
                 <div className={styles.tasksContent}>
+                    {
+                        countTasks === 0 &&
+                        <TaskEmpty/>
+                    }
                     <div className={styles.taskList}>
                         {tasks.map(task => {
                             return (
@@ -89,6 +101,7 @@ export function Main() {
                                     key={task}
                                     content={task}
                                     onDeleteTask= {deleteTask} 
+                                    handleFinished= {updateFinished}
                                 />
                             )
                         })}
