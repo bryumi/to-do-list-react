@@ -5,7 +5,7 @@ import { ChangeEvent, useState } from 'react'
 interface TaskProps extends ChangeEvent<HTMLAllCollection>{
     content: string;
     onDeleteTask: (comment: string) => void;
-    handleFinished: (n: number) => void;
+    handleFinished: (n: boolean) => void;
 }
 export function Tasks({content, onDeleteTask, handleFinished} : TaskProps) {
     
@@ -13,25 +13,10 @@ export function Tasks({content, onDeleteTask, handleFinished} : TaskProps) {
         onDeleteTask(content)
     }
     const [checked, setChecked] = useState(true);
-    const [countTaskFinished, setCountTaskFinished] = useState(1);
+    // const [countTaskFinished, setCountTaskFinished] = useState(1);
     const handleChecked = () => {
-        setChecked(!checked) //false
-        
-        console.log(checked)
-        if (!checked){
-            setCountTaskFinished((state) => {
-                return state + 1
-            })
-            console.log(countTaskFinished)
-        } else {
-            setCountTaskFinished((state) => {
-                return state - 1
-            })
-        }
-
-        handleFinished(countTaskFinished)
-        console.log(countTaskFinished)
-        
+        setChecked(!checked) //false  
+        handleFinished(checked)   
     };
     
     const checkedClass = !checked ? 'checked' : '';

@@ -33,7 +33,19 @@ export function Main() {
     function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
         event.target.setCustomValidity('Esse campo é obrigatório!')
     }
-
+  
+    const [finishedTasks, setFinishedTasks] = useState(0)
+    function updateFinished(finished: boolean) {
+        if (finished){
+            setFinishedTasks((state) => {
+                 return state + 1
+            })
+        } else {
+            setFinishedTasks((state) => {
+                return state - 1
+           })  
+        }
+    }
     function deleteTask(taskToDelete: string){
         const taskWithoutDeletedOne = tasks.filter(task => {
             return task !== taskToDelete
@@ -43,10 +55,17 @@ export function Main() {
         setCountTasks((state) => {
             return state - 1
         });
-    }
-    const [finishedTasks, setFinishedTasks] = useState(0)
-    function updateFinished(finished: number) {
-        setFinishedTasks(finished)
+
+        if(finishedTasks > 0){
+            setFinishedTasks((state) => {
+                return state -1
+            })
+        } else if (finishedTasks === 0) {
+            setFinishedTasks((state) => {
+                return state = 0
+            })
+        }
+        
     }
     const isNewTaskEmpty = newTask.length === 0
     return (
